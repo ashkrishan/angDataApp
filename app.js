@@ -17,7 +17,19 @@ app.use(express.static(__dirname + 'public'));
 app.use(bodyParser.json());
 
 
-seedDb();
+//seedDb();
+
+app.get('/', function(req,res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/getuser', function(req,res) {
+     User.find({}, function(err, foundUsers) {
+         if (err) { console.log(err); } else {
+             res.json(foundUsers);
+         }
+     });
+});
 
 app.listen('8001', function() {
 	console.log('Server started');
