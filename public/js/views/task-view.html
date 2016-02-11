@@ -1,0 +1,23 @@
+<div class="container">
+	<div ng-repeat="task in taskList">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Task Name</th>
+				<th>Description</th>
+				<th>createdOn</th>
+				<th>createdBy</th>			
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ task.name }}</td>	
+				<td>{{ task.description }}</td>	
+				<td>{{ task.createdOn }}</td>	
+				<td>{{ task.createdBy }}</td>	
+				<td>{{ task.assignee }}</td>			
+			</tr>
+		</tbody>
+	</table>
+   </div>
+</div>

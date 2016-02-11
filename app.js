@@ -13,20 +13,20 @@ var seedDb = require(__dirname + '/seedDb');
 var app = express();
 
 //Middleware and initialising
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 
-//seedDb();
+seedDb();
 
 app.get('/', function(req,res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/getuser', function(req,res) {
-     User.find({}, function(err, foundUsers) {
+app.get('/gettasks', function(req,res) {
+     Task.find({}, function(err, foundTasks) {
          if (err) { console.log(err); } else {
-             res.json(foundUsers);
+             res.json(foundTasks);
          }
      });
 });

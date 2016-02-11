@@ -7,10 +7,19 @@ var User = require(__dirname + '/models/user');
 //	
 //})
 module.exports = function () {
-	User.create({firstName: 'Ash', 
-			 lastname: 'Kris', 
-			 jobTitle: 'Project Manager'}, function(err, newUser) {
+	User.create({firstName: 'Stevey', 
+			 lastname: 'Cole', 
+			 jobTitle: 'IT dude'}, function(err, newUser) {
 							console.log(newUser);
 });
+	
+	Task.create({name: 'Job 1',
+				 description: 'This is test job',
+				 assignee: 'Jonny boy'
+					
+				}, function (err, newTask){
+					console.log(newTask);
+	});
 
 }
+
