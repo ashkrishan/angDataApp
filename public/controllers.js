@@ -20,24 +20,35 @@
     'use strict';
     angular.module('mainApp').controller('taskListCtrl', function ($scope, $http, $log) {
         
-        $http.get('/gettasks')
-            .success(function (data) {
+		$http({
+			url: '/users',
+			method: 'GET'})
+			.then(function successCallback(data) {
+				$scope.userList = data;	
+				$log.log($scope.userList);
+			}, function errorCallback (err) {
+					$log.error(err);
+			});	
+		
+		$http({ 
+			url:'/tasks',
+			method:'GET'})
+            .then(function successCallback(data) {
                 $scope.taskList = data;
-            })
-            .error(function (err) {
+				$log.log($scope.taskList);
+            }, 	function errorCallback(err) {
                 $log.error(err);
-            });
-    
+            });		
+	
         $scope.onSubmitForm = function(form) { 
                         $http({
-                            url: '/addtask',
+                            url: '/tasks',
                             method: 'POST',
                             data: $scope.formFields
                         })
-                        .success(function (data) {
+                        .then(function successCallback(data) {
                             console.log('added - ' + data);
-                        })
-                        .error(function (err) {
+                        }, function errorCallback(err) {
                             $log.error(err);
                         });
 

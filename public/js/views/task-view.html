@@ -8,12 +8,13 @@
         </div>
         <div class="form-group">        
             <select name="selection" ng-model="formFields.createdBy" required>
-                <option value="{{ task.createdBy._id }}" ng-repeat="task in taskList" required>
-                    {{ task.createdBy.firstName }}
+                <option value="" ng-selected=>Please select</option>
+				<option value="{{ user._id }}" ng-repeat="user in userList.data" required>
+                    {{ user.firstName }}   	
                 </option>
                 <!-- <input type="text" class="form-control" placeholder="Task created By" ng-model="formFields.createdBy" /> -->
-            </select>
-        </div>
+            </select> 
+		</div>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Task assign to" ng-model="formFields.assignee" required />      
         </div>
@@ -31,7 +32,7 @@
 				<th>Assigned To</th>			
 			</tr>
             </thead>
-		<tbody ng-repeat="task in taskList | filter:searchKey">
+		<tbody ng-repeat="task in taskList.data | filter:searchKey">
 			<tr>
 				<td>{{ task.name }}</td>	
 				<td>{{ task.description }}</td>	

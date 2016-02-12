@@ -23,18 +23,31 @@ app.get('/', function(req,res) {
     res.send(__dirname + '/public/index.html');
 });
 
+
+
+app.get('/users', function(req, res) {
+	User.find({}, function(err, foundUsers) {
+		if (err) { console.log(err); } else {
+			res.json(foundUsers);
+		}
+	})
+});
+
+
 //GET all tasks
-app.get('/gettasks', function(req,res) {    
+app.get('/tasks', function(req,res) {    
     Task.find({}).populate('createdBy').exec(function(err, foundTasks) {         
          if (err) { console.log(err); } else {  
              res.json(foundTasks);
          }
     });
 });
+
+
         
 
 //Create
-app.post('/addtask', function(req,res) {
+app.post('/tasks', function(req,res) {
     console.log(req.body);
     Task.create(req.body, function(err, newTaskAdded) {
         if (err) { console.log(err); } else {

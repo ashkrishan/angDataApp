@@ -21,6 +21,17 @@ module.exports = function () {
 				}, function (err, newTask){
 					console.log(newTask);
 	});
-
+	
+	Task.create({name: 'Job 2',
+				 description: 'This is test job',
+                 createdBy: "56bd030321680d24135de4ca",  //temperorily setup user
+				 assignee: 'Joe Blog'
+					
+				}, function (err, newTask){
+					console.log(newTask);
+	});
+	
 }
+
+
 
