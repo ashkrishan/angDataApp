@@ -3,7 +3,7 @@
     'use strict';
     angular.module('mainApp').config(function ($routeProvider) {
         $routeProvider
-			.when('/tasks', { 
+			.when('/tasks', {
 				templateUrl: 'js/views/task-view.html',
 				controller: 'taskListCtrl'
 		   		})
@@ -25,8 +25,24 @@
                 $scope.taskList = data;
             })
             .error(function (err) {
-                $log(err);
+                $log.error(err);
             });
+    
+        $scope.onSubmitForm = function(form) { 
+                        $http({
+                            url: '/addtask',
+                            method: 'POST',
+                            data: $scope.formFields
+                        })
+                        .success(function (data) {
+                            console.log('added - ' + data);
+                        })
+                        .error(function (err) {
+                            $log.error(err);
+                        });
+
+        }
     });
+    
     
 }());

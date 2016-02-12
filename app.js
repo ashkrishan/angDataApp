@@ -17,19 +17,32 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 
-seedDb();
+//seedDb();
 
 app.get('/', function(req,res) {
-    res.sendFile(__dirname + '/public/index.html');
+    res.send(__dirname + '/public/index.html');
 });
 
-app.get('/gettasks', function(req,res) {
-     Task.find({}, function(err, foundTasks) {
-         if (err) { console.log(err); } else {
+//GET all tasks
+app.get('/gettasks', function(req,res) {    
+    Task.find({}).populate('createdBy').exec(function(err, foundTasks) {         
+         if (err) { console.log(err); } else {  
              res.json(foundTasks);
          }
-     });
+    });
 });
+        
+
+//Create
+app.post('/addtask', function(req,res) {
+    console.log(req.body);
+    Task.create(req.body, function(err, newTaskAdded) {
+        if (err) { console.log(err); } else {
+            res.json(newTaskAdded);
+        }
+    });
+})
+
 
 app.listen('8001', function() {
 	console.log('Server started');

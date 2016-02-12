@@ -15,7 +15,8 @@ module.exports = function () {
 	
 	Task.create({name: 'Job 1',
 				 description: 'This is test job',
-				 assignee: 'Jonny boy'
+                 createdBy: "56bc93f6447f6240554a6f29",  //temperorily setup user
+				 assignee: 'Joe Blog'
 					
 				}, function (err, newTask){
 					console.log(newTask);
