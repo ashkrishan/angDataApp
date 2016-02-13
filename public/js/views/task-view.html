@@ -43,5 +43,8 @@
 		</tbody>
 	<!-- <pre>{{ taskList | json }}</pre> -->
     </table>
+	<button class="btn btn-default"
+              ng-csv="taskList.data" csv-header="getHeader()" filename="test" field-separator="¬" decimal-separator="."
+              ng-click="clickFn()">Export to csv</button>
     
 </div>

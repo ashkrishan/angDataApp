@@ -2,6 +2,6 @@
 /*global angular*/
 (function () {
     'use strict';
-    angular.module('mainApp', ['ngRoute', 'jcs-autoValidate']);
+    angular.module('mainApp', ['ngRoute', 'jcs-autoValidate', 'ngSanitize', 'ngCsv']);
     
 }());
