@@ -1,5 +1,7 @@
-<div class="container">
-    <form name="taskForm" ng-submit="onSubmitForm(taskForm)" novalidate="novalidate">
+<div class="row app-center-rows">
+	<div class="col-md-4">
+    <div class="app-column-style">
+	</span><form name="taskForm" ng-submit="onSubmitForm(taskForm)" novalidate="novalidate">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Task name" ng-model="formFields.name" required="required" />
         </div>
@@ -16,13 +18,17 @@
             </select> 
 		</div>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Task assign to" ng-model="formFields.assignee" required />      
+            <input type="text" class="form-control" placeholder="Task assign to" ng-model="formFields.assignee" required />    
         </div>
         <input type="submit" class="btn-primary" />
     </form>
-    
-    <input type="text" placeholder="search" ng-model="searchKey" />
-    <table class="table table-bordered">
+	</div>
+	</div>
+	<div class="col-md-8">
+    	<div class="form-group">
+		<input class="form-control" type="text" placeholder="search" ng-model="searchKey" />
+	</div>
+	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>Task Name</th>
@@ -46,5 +52,7 @@
 	<button class="btn btn-default"
               ng-csv="taskList.data" csv-header="getHeader()" filename="test" field-separator="¬" decimal-separator="."
               ng-click="clickFn()">Export to csv</button>
-    
+	</div>
+</div>
+
 </div>
